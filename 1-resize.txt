@@ -1,0 +1,34 @@
+
+neljä olennaista taitoa
+
+1. Kankaan luominen ja koon muuttaminen
+2. piirustuselementit
+3. elementtien animointi
+4. vuorovaikutuksessa elementtien kanssa
+
+cavas tehdään
+
+<canvas></canvas>
+
+
+voit tuoda elementin ja asettaa sen korkeuden.
+
+const canvas = document.querySelector("canvas");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+
+let c = canvas.getContext("2d");
+
+c = context
+
+
+c on superobjekti, joka perii kaikki
+getContext-menetelmät helpompaa käyttöä varten
+
+c.fillRect(120,180, 100, 100);
+c.fillRect(100,100, 100, 100);
+c.fillRect(190,200, 1000, 10);
+
+Tällä fillRect metodilla tehdään neliöitä ja
+suorakulmioita

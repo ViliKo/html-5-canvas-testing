@@ -1,0 +1,119 @@
+Tällä funktiolla animoidaan canvas kappaleita
+
+const animate = () => {
+    requestAnimationFrame(animate);   
+}
+
+animate();
+
+Funktio, jolla voi animoida ympyrän liikkeen
+kulmassa ja kimpoamisen reunasta
+
+x += dx;
+y += dy;
+
+Lokaatio muuttuu
+
+if (x > innerWidth - radius || x < 0 + radius) 
+    dx = -dx;
+
+Liikkeen suunta muuttuu
+
+requestAnimationFrame(animate);
+    
+Aloittaa animaation
+
+c.clearRect(0, 0, innerWidth, innerHeight);
+
+Puhdistaa ruudun
+
+let x = Math.random()*innerWidth;
+let y = Math.random()*innerHeight;
+let dx = (Math.random() - 0.5)*3;
+let dy = (Math.random() - 0.5)*3;
+const radius = 30;
+
+const animate = () => {
+    requestAnimationFrame(animate);
+    
+    c.clearRect(0, 0, innerWidth, innerHeight);
+    c.beginPath();
+    c.arc(x, y, radius, 0, Math.PI *2, false)
+    c.strokeStyle = "red";
+    c.stroke();
+
+    if (x > innerWidth - radius || x < 0 + radius) 
+        dx = -dx;
+
+    if (y > innerWidth - radius || y < 0 + radius) 
+        dy = -dy;
+
+    x += dx;
+    y += dy;
+    
+}
+
+animate();
+
+
+
+Tässä on koko animaatio luupin rakentaminen
+
+
+
+class Circle {
+	constructor(x, y, dx, dy, radius) {
+		this.x = x;
+		this.y = y;
+		this.dx = dx;
+		this.dy = dy;
+        this.radius = radius;
+
+		this.draw = () => {
+			c.beginPath();
+			c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+			c.strokeStyle = 'red';
+			c.stroke();
+		};
+
+		this.update = () => {
+			if (this.x > innerWidth - this.radius || this.x < 0 + this.radius) this.dx = -this.dx;
+
+			if (this.y > innerWidth - this.radius * 2 || this.y < 0 + this.radius) this.dy = -this.dy;
+
+			this.x += this.dx;
+			this.y += this.dy;
+
+            this.draw();
+		};
+        
+	}
+}
+
+var circleArray = [];
+
+for (let i = 0; i< 20; i++) {
+    let radius = 30;
+    let x = Math.random() * (innerWidth - radius * 2) + radius;
+    let y = Math.random() * (innerHeight - radius * 2) + radius;
+    let dx = (Math.random() - 0.5) * 3;
+    let dy = (Math.random() - 0.5) * 3;
+
+    circleArray.push(new Circle(x, y, dx, dy, radius))
+}
+
+
+const animate = () => {
+	requestAnimationFrame(animate);
+
+	c.clearRect(0, 0, innerWidth, innerHeight);
+
+    for (let i = 0; i< circleArray.length; i++) {
+        circleArray[i].update();
+    }
+    
+
+
+};
+
+animate();

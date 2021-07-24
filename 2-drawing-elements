@@ -1,0 +1,62 @@
+fillStyle täytää neliön värillä. Tämä metodi
+pitää laittaa ennen neliön piirtämistä, jotta
+se toimii.
+
+c.fillStyle = "rgba(0, 50, 244, 0.6)"
+c.fillRect(120,180, 100, 100);
+c.fillRect(100,100, 100, 100);
+c.fillStyle = "rgba(0, 200, 244, 0.6)"
+c.fillRect(190,200, 1000, 10);
+
+Viiva polkuun ensin aloitetaan metodilla
+beginPaoth tämän jälkeen tehdään alkupiste
+ja muita pisteitä, jossa polku tulee käymään
+moveTo -> lineTo -> lineTo
+
+strokeStyle määrittää viivan värin ja stroke
+piirtää viivan
+
+c.beginPath();
+c.moveTo(50, 300);
+c.lineTo(500, 100);
+c.lineTo(200, 600);
+c.strokeStyle = "#1F1"
+c.stroke();
+
+Tällä syntaksilla rakennetaan ympyrä
+
+c.beginPath();
+c.arc(300, 300, 30, 0, Math.PI *2, false)
+c.strokeStyle = "blue";
+c.stroke();
+
+Tällä me generoidaan proceduaalisesti ympyröitä
+ruutuun.
+
+for (let i = 0; i < 3; i++) {
+    let x = Math.random() * window.innerWidth;
+    let y = Math.random() * window.innerHeight;
+    c.beginPath();
+    c.arc(x, y, 30, 0, Math.PI *2, false)
+    c.strokeStyle = "red";
+    c.stroke();
+}
+
+
+
+Kurssin tehtävä, jossa piti randomisoida myös
+ympyröiden värit
+
+for (let i = 0; i < 3; i++) {
+    let redVal = Math.random() * 255;
+    let greenVal = Math.random() * 255;
+    let blueVal = Math.random() * 255;
+    let x = Math.random() * window.innerWidth;
+    let y = Math.random() * window.innerHeight;
+    c.beginPath();
+    c.arc(x, y, 30, 0, Math.PI *2, false)
+    c.strokeStyle = `rgba(${redVal},${greenVal},${blueVal}, 1)`;
+    c.stroke();
+}
+
+
